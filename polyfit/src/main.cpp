@@ -42,6 +42,7 @@ Eigen::VectorXd polyfit(Eigen::VectorXd xvals, Eigen::VectorXd yvals,
 int main() {
   Eigen::VectorXd xvals(6);
   Eigen::VectorXd yvals(6);
+  Eigen::VectorXd polyRes;
   // x waypoint coordinates
   xvals << 9.261977, -2.06803, -19.6663, -36.868, -51.6263, -66.3482;
   // y waypoint coordinates
@@ -49,9 +50,11 @@ int main() {
 
   // TODO: use `polyfit` to fit a third order polynomial to the (x, y)
   // coordinates.
+  polyRes = polyfit(xvals, yvals, 3);
 
   for (double x = 0; x <= 20; x += 1.0) {
     // TODO: use `polyeval` to evaluate the x values.
+    std::cout << polyeval(polyRes, x) << std::endl;
   }
 
   // Expected output
